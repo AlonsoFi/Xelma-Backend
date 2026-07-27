@@ -353,7 +353,7 @@ See [docs/architecture.md](docs/architecture.md) for the full architecture decis
 - `POST /precision` - [Auth] Submit a precision bet (stub or on-chain)
 
 #### **Tournaments (`/api/tournaments`)**
-- `GET /` - List all tournaments (optional `?status=` filter)
+- `GET /` - List tournaments. Query: `?mode=UP_DOWN|LEGENDS`, `?status=UPCOMING|ACTIVE|COMPLETED|CANCELLED`, `limit`, `offset` (mode and status may be combined). Response: `{ success, data, pagination: { limit, offset, total } }`
 - `GET /:id` - Get tournament detail by id
 - `POST /:id/join` - [Auth] Join a tournament
 
@@ -2338,6 +2338,8 @@ curl "http://localhost:3001/api/leaderboard?limit=10&offset=0"
 
 ```bash
 curl "http://localhost:3001/api/tournaments?limit=10&offset=0"
+curl "http://localhost:3001/api/tournaments?mode=UP_DOWN"
+curl "http://localhost:3001/api/tournaments?status=ACTIVE&mode=LEGENDS&limit=20&offset=0"
 ```
 
 #### Get Tournament Detail
