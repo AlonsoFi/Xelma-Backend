@@ -1155,8 +1155,23 @@ socket.on('new_notification', (notification) => {
 socket.on('new_message', (message) => {
   console.log('Chat:', message);
 });
+
+// Listen for accepted bets (stub or on-chain) — join the `round` room first
+socket.on('bet:accepted', (data) => {
+  console.log('Bet accepted:', data);
+  // {
+  //   roundId?: string,
+  //   address: string,
+  //   amount: number,
+  //   side?: 'UP' | 'DOWN',
+  //   mode: 'UP_DOWN' | 'PRECISION',
+  //   state: 'stub' | 'on-chain-success',
+  //   txHash?: string
+  // }
+});
 ```
 
+See also [`src/docs/websocket.md`](src/docs/websocket.md) for the Socket.IO client contract.
 ---
 
 ## Testing
